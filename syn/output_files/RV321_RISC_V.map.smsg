@@ -1,0 +1,1 @@
+Info (10281): Verilog HDL Declaration information at topmodule.sv(21): object "reg_write" differs only in case from object "Reg_write" in the same scope File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 21
