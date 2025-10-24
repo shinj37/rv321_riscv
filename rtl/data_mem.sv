@@ -12,4 +12,11 @@ module data_mem (
 	input logic [31:0] write_data,
 	output logic [31:0] read_data
 );
+
+
+
+
+
+
+
 endmodule
