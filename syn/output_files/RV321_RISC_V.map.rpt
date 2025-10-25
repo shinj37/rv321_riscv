@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RV321_RISC_V
-Fri Oct 24 15:38:46 2025
+Fri Oct 24 22:26:33 2025
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -10,18 +10,7 @@ Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Source Files Read
-  6. Analysis & Synthesis Resource Usage Summary
-  7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Port Connectivity Checks: "reg_file:register_unit"
- 10. Port Connectivity Checks: "inst_mem:instruct_unit"
- 11. Port Connectivity Checks: "data_mem:datamemory_unit"
- 12. Port Connectivity Checks: "immGen:immediate_unit"
- 13. Post-Synthesis Netlist Statistics for Top Partition
- 14. Elapsed Time Per Partition
- 15. Analysis & Synthesis Messages
- 16. Analysis & Synthesis Suppressed Messages
+  5. Analysis & Synthesis Messages
 
 
 
@@ -45,27 +34,22 @@ https://fpgasoftware.intel.com/eula.
 
 
 
-+-------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                  ;
-+---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Fri Oct 24 15:38:46 2025       ;
-; Quartus Prime Version           ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
-; Revision Name                   ; RV321_RISC_V                                ;
-; Top-level Entity Name           ; topmodule                                   ;
-; Family                          ; Cyclone V                                   ;
-; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 0                                           ;
-; Total pins                      ; 2                                           ;
-; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 0                                           ;
-; Total DSP Blocks                ; 0                                           ;
-; Total HSSI RX PCSs              ; 0                                           ;
-; Total HSSI PMA RX Deserializers ; 0                                           ;
-; Total HSSI TX PCSs              ; 0                                           ;
-; Total HSSI PMA TX Serializers   ; 0                                           ;
-; Total PLLs                      ; 0                                           ;
-; Total DLLs                      ; 0                                           ;
-+---------------------------------+---------------------------------------------+
++---------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                              ;
++-----------------------------+---------------------------------------------+
+; Analysis & Synthesis Status ; Failed - Fri Oct 24 22:26:33 2025           ;
+; Quartus Prime Version       ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
+; Revision Name               ; RV321_RISC_V                                ;
+; Top-level Entity Name       ; topmodule                                   ;
+; Family                      ; Cyclone V                                   ;
+; Logic utilization (in ALMs) ; N/A until Partition Merge                   ;
+; Total registers             ; N/A until Partition Merge                   ;
+; Total pins                  ; N/A until Partition Merge                   ;
+; Total virtual pins          ; N/A until Partition Merge                   ;
+; Total block memory bits     ; N/A until Partition Merge                   ;
+; Total PLLs                  ; N/A until Partition Merge                   ;
+; Total DLLs                  ; N/A until Partition Merge                   ;
++-----------------------------+---------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
@@ -171,338 +155,28 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                             ;
-+----------------------------------+-----------------+------------------------------------+------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                   ; Library ;
-+----------------------------------+-----------------+------------------------------------+------------------------------------------------+---------+
-; topmodule.sv                     ; yes             ; User SystemVerilog HDL File        ; /home/justinshin/RV321_RISC_V/rtl/topmodule.sv ;         ;
-; ../rtl/data_mem.sv               ; yes             ; User SystemVerilog HDL File        ; /home/justinshin/RV321_RISC_V/rtl/data_mem.sv  ;         ;
-; ../rtl/reg_file.sv               ; yes             ; User SystemVerilog HDL File        ; /home/justinshin/RV321_RISC_V/rtl/reg_file.sv  ;         ;
-; ../rtl/inst_mem.sv               ; yes             ; User SystemVerilog HDL File        ; /home/justinshin/RV321_RISC_V/rtl/inst_mem.sv  ;         ;
-; immGen.sv                        ; yes             ; Auto-Found SystemVerilog HDL File  ; /home/justinshin/RV321_RISC_V/rtl/immGen.sv    ;         ;
-+----------------------------------+-----------------+------------------------------------+------------------------------------------------+---------+
-
-
-+-----------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary         ;
-+---------------------------------------------+-------+
-; Resource                                    ; Usage ;
-+---------------------------------------------+-------+
-; Estimate of Logic utilization (ALMs needed) ; 0     ;
-;                                             ;       ;
-; Combinational ALUT usage for logic          ; 0     ;
-;     -- 7 input functions                    ; 0     ;
-;     -- 6 input functions                    ; 0     ;
-;     -- 5 input functions                    ; 0     ;
-;     -- 4 input functions                    ; 0     ;
-;     -- <=3 input functions                  ; 0     ;
-;                                             ;       ;
-; Dedicated logic registers                   ; 0     ;
-;                                             ;       ;
-; I/O pins                                    ; 2     ;
-;                                             ;       ;
-; Total DSP Blocks                            ; 0     ;
-;                                             ;       ;
-; Maximum fan-out node                        ; clock ;
-; Maximum fan-out                             ; 1     ;
-; Total fan-out                               ; 2     ;
-; Average fan-out                             ; 0.50  ;
-+---------------------------------------------+-------+
-
-
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                    ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
-; |topmodule                 ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 2    ; 0            ; |topmodule          ; topmodule   ; work         ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
-Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 0     ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
-
-
-+----------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "reg_file:register_unit"                                                                   ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port       ; Type   ; Severity ; Details                                                                             ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; write_data ; Input  ; Info     ; Stuck at GND                                                                        ;
-; read_data1 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; read_data2 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------+
-; Port Connectivity Checks: "inst_mem:instruct_unit" ;
-+--------------+-------+----------+------------------+
-; Port         ; Type  ; Severity ; Details          ;
-+--------------+-------+----------+------------------+
-; inst_address ; Input ; Info     ; Stuck at GND     ;
-+--------------+-------+----------+------------------+
-
-
-+----------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "data_mem:datamemory_unit"                                                                 ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port       ; Type   ; Severity ; Details                                                                             ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-; address    ; Input  ; Info     ; Stuck at GND                                                                        ;
-; write_data ; Input  ; Info     ; Stuck at GND                                                                        ;
-; read_data  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "immGen:immediate_unit"                                                                   ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------+
-; Port      ; Type   ; Severity ; Details                                                                             ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------+
-; immediate ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-----------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+-----------------------------------------------------+
-; Post-Synthesis Netlist Statistics for Top Partition ;
-+-------------------+---------------------------------+
-; Type              ; Count                           ;
-+-------------------+---------------------------------+
-; boundary_port     ; 2                               ;
-;                   ;                                 ;
-; Max LUT depth     ; 0.00                            ;
-; Average LUT depth ; 0.00                            ;
-+-------------------+---------------------------------+
-
-
-+-------------------------------+
-; Elapsed Time Per Partition    ;
-+----------------+--------------+
-; Partition Name ; Elapsed Time ;
-+----------------+--------------+
-; Top            ; 00:00:00     ;
-+----------------+--------------+
-
-
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Fri Oct 24 15:38:41 2025
+    Info: Processing started: Fri Oct 24 22:26:28 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RV321_RISC_V -c RV321_RISC_V
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
-Info (12021): Found 1 design units, including 1 entities, in source file /home/justinshin/RV321_RISC_V/rtl/topmodule.sv
-    Info (12023): Found entity 1: topmodule File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 9
+Error (10187): Verilog HDL syntax error at topmodule.sv(240): unexpected end of file in If Statement File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 240
+Info (12021): Found 0 design units, including 0 entities, in source file /home/justinshin/RV321_RISC_V/rtl/topmodule.sv
 Info (12021): Found 1 design units, including 1 entities, in source file /home/justinshin/RV321_RISC_V/rtl/data_mem.sv
     Info (12023): Found entity 1: data_mem File: /home/justinshin/RV321_RISC_V/rtl/data_mem.sv Line: 6
 Info (12021): Found 1 design units, including 1 entities, in source file /home/justinshin/RV321_RISC_V/rtl/reg_file.sv
     Info (12023): Found entity 1: reg_file File: /home/justinshin/RV321_RISC_V/rtl/reg_file.sv Line: 7
 Info (12021): Found 1 design units, including 1 entities, in source file /home/justinshin/RV321_RISC_V/rtl/inst_mem.sv
     Info (12023): Found entity 1: inst_mem File: /home/justinshin/RV321_RISC_V/rtl/inst_mem.sv Line: 6
-Info (12127): Elaborating entity "topmodule" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at topmodule.sv(24): object "alu_control" assigned a value but never read File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 24
-Warning (10240): Verilog HDL Always Construct warning at topmodule.sv(71): inferring latch(es) for variable "inst_address", which holds its previous value in one or more paths through the always construct File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Warning (10240): Verilog HDL Always Construct warning at topmodule.sv(71): inferring latch(es) for variable "data_address", which holds its previous value in one or more paths through the always construct File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Warning (10240): Verilog HDL Always Construct warning at topmodule.sv(71): inferring latch(es) for variable "reg_write", which holds its previous value in one or more paths through the always construct File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Warning (10240): Verilog HDL Always Construct warning at topmodule.sv(71): inferring latch(es) for variable "data_write", which holds its previous value in one or more paths through the always construct File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[0]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[1]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[2]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[3]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[4]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[5]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[6]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[7]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[8]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[9]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[10]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[11]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[12]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[13]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[14]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[15]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[16]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[17]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[18]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[19]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[20]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[21]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[22]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[23]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[24]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[25]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[26]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[27]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[28]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[29]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[30]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_write[31]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[0]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[1]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[2]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[3]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[4]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[5]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[6]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[7]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[8]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[9]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[10]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[11]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[12]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[13]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[14]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[15]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[16]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[17]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[18]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[19]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[20]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[21]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[22]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[23]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[24]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[25]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[26]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[27]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[28]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[29]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[30]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "reg_write[31]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[0]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[1]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[2]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[3]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[4]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[5]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[6]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[7]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[8]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[9]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[10]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[11]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[12]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[13]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[14]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[15]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[16]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[17]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[18]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[19]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[20]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[21]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[22]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[23]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[24]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[25]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[26]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[27]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[28]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[29]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[30]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "data_address[31]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[0]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[1]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[2]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[3]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[4]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[5]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[6]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[7]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[8]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[9]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[10]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[11]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[12]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[13]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[14]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[15]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[16]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[17]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[18]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[19]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[20]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[21]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[22]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[23]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[24]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[25]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[26]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[27]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[28]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[29]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[30]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Info (10041): Inferred latch for "inst_address[31]" at topmodule.sv(71) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 71
-Warning (12125): Using design file /home/justinshin/RV321_RISC_V/rtl/immGen.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: immGen File: /home/justinshin/RV321_RISC_V/rtl/immGen.sv Line: 7
-Info (12128): Elaborating entity "immGen" for hierarchy "immGen:immediate_unit" File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 33
-Info (12128): Elaborating entity "data_mem" for hierarchy "data_mem:datamemory_unit" File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 45
-Warning (10034): Output port "read_data" at data_mem.sv(14) has no driver File: /home/justinshin/RV321_RISC_V/rtl/data_mem.sv Line: 14
-Info (12128): Elaborating entity "inst_mem" for hierarchy "inst_mem:instruct_unit" File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 53
-Warning (10034): Output port "inst_data" at inst_mem.sv(13) has no driver File: /home/justinshin/RV321_RISC_V/rtl/inst_mem.sv Line: 13
-Info (12128): Elaborating entity "reg_file" for hierarchy "reg_file:register_unit" File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 68
-Warning (10034): Output port "read_data1" at reg_file.sv(17) has no driver File: /home/justinshin/RV321_RISC_V/rtl/reg_file.sv Line: 17
-Warning (10034): Output port "read_data2" at reg_file.sv(19) has no driver File: /home/justinshin/RV321_RISC_V/rtl/reg_file.sv Line: 19
-Warning (20013): Ignored 24 assignments for entity "RV321_RISC_V" -- entity does not exist in design
-    Warning (20014): Assignment for entity set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_PRESERVE_HIGH_SPEED_TILES ON -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IGNORE_SOURCE_FILE_CHANGES OFF -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ALWAYS_USE_QXP_NETLIST OFF -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_COLOR 16764057 -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_ASSIGNMENTS ON -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_ASSIGNMENTS REPLACE_CONFLICTING -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_LOGICLOCK_REGIONS UPDATE_CONFLICTING -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PIN_ASSIGNMENTS ON -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PROMOTE_ASSIGNMENTS ON -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_TYPE STANDARD_PARTITION -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name ALLOW_MULTIPLE_PERSONAS OFF -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ASD_REGION_ID 1 -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name CROSS_BOUNDARY_OPTIMIZATIONS OFF -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PROPAGATE_CONSTANTS_ON_INPUTS ON -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PROPAGATE_INVERSIONS_ON_INPUTS ON -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name REMOVE_LOGIC_ON_UNCONNECTED_OUTPUTS ON -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name MERGE_EQUIVALENT_INPUTS ON -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name MERGE_EQUIVALENT_BIDIRS ON -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name ABSORB_PATHS_FROM_OUTPUTS_TO_INPUTS ON -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_EXTRACT_HARD_BLOCK_NODES ON -entity RV321_RISC_V -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ENABLE_STRICT_PRESERVATION OFF -entity RV321_RISC_V -section_id Top was ignored
-Info (144001): Generated suppressed messages file /home/justinshin/RV321_RISC_V/syn/output_files/RV321_RISC_V.map.smsg
-Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 2 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "clock" File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 10
-    Warning (15610): No output dependent on input pin "resetn" File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 12
-Info (21057): Implemented 2 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 0 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 39 warnings
-    Info: Peak virtual memory: 961 megabytes
-    Info: Processing ended: Fri Oct 24 15:38:46 2025
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:15
-
-
-+------------------------------------------+
-; Analysis & Synthesis Suppressed Messages ;
-+------------------------------------------+
-The suppressed messages can be found in /home/justinshin/RV321_RISC_V/syn/output_files/RV321_RISC_V.map.smsg.
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 1 error, 1 warning
+    Error: Peak virtual memory: 901 megabytes
+    Error: Processing ended: Fri Oct 24 22:26:33 2025
+    Error: Elapsed time: 00:00:05
+    Error: Total CPU time (on all processors): 00:00:16
 
 

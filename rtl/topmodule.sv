@@ -4,7 +4,7 @@
 `endif
 
 
-`include "define_state.h"
+`include "define_state.h";
 
 module topmodule (
 	input logic clock,
@@ -27,8 +27,15 @@ logic [31:0] sum_result;
 logic [3:0] operation;
 logic [3:0] functField;
 
-logic [31:0] ALU_in2;
+logic [31:0] ALU_in1, ALU_in2;
 logic [31:0] ALU_result;
+
+logic [31:0] PC_in;
+logic [31:0] PC_out; 
+
+logic zero_ctrl; 
+logic [31:0] next_PC;
+top_control instr_state; 
 
 
 immGen immediate_unit (
@@ -201,25 +208,34 @@ always_ff @(posedge clock or negedge resetn ) begin
 			end
 			4'b0110: begin
 				ALU_result <= ALU_in1 - ALU_in2;
+				if (ALU_result == 32'h0) zero_ctrl <= 1'b0;
 			end
 			4'b0001: begin
 				ALU_result <= ALU_in1 | ALU_in2;
+				if (ALU_result == 32'h0) zero_ctrl <= 1'b0;
 			end
 			4'b0000: begin
 				ALU_result <= ALU_in1 & ALU_in2;
+				if (ALU_result == 32'h0) zero_ctrl <= 1'b0;
 			end
 		endcase
 
 		data_address <= ALU_result;
 		if (Mem_Write) data_write <= reg_out2;
-		if (Mem_read) data_read <= data_read; 
+		// Memory read is handled by the data_mem module 
 
 		if (Reg_Write) begin
 			reg_write <= (Mem_to_reg) ? data_read : ALU_result;
 		end
-
-	
+		
+		inst_address <= (Branch && zero_ctrl) ? sum_result : next_PC; 
+		
 	end
 end
+
+	always_comb begin
+		sum_result = inst_address + immediate[31:0]; 
+		next_PC = inst_address + 32'h4; 
+	end
 
 endmodule
