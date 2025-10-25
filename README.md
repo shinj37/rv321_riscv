@@ -308,10 +308,10 @@ Constraint file will map signals to Tang Nano 20K pins:
 - [x] Instruction memory
 - [x] Data memory
 - [x] Project structure
-- [ ] Complete instruction decoder
-- [ ] ALU implementation
-- [ ] Control unit
-- [ ] Branch/Jump logic
+- [x] Complete instruction decoder
+- [x] ALU implementation
+- [x] Control unit
+- [x] Branch/Jump logic
 
 ### Phase 2: Verification & Testing
 - [ ] Comprehensive testbenches
