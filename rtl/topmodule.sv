@@ -18,7 +18,7 @@ logic wr_en, read_en; //data memory write and read enable
 logic [31:0] data_address, data_write, data_read;
 logic reg_wr_en; //register file write enable
 logic [4:0] read_reg1, read_reg2, write_reg1;
-logic [31:0] reg_write, reg_out1, reg_out2;
+logic [31:0] reg_write, reg_read_data1, reg_read_data2;
 logic [31:0] inst_address, inst_data;
 logic [6:0] opcode;
 logic [63:0] immediate;
@@ -74,8 +74,8 @@ reg_file register_unit (
 	.write_reg1(write_reg1),
 	.write_data(reg_write),
 	
-	.read_data1(reg_out1),
-	.read_data2(reg_out2)
+	.read_data1(reg_read_data1),
+	.read_data2(reg_read_data2)
 );
 
 
@@ -198,9 +198,9 @@ always_ff @(posedge clock or negedge resetn ) begin
 		if (ALU_src) begin
 			ALU_in2 <= immediate;
 		end else begin
-			ALU_in2 <= reg_out2;
+			ALU_in2 <= reg_read_data2;
 		end
-		ALU_in1 <= reg_out1;
+		ALU_in1 <= reg_read_data1;
 
 		case (operation)
 			4'b0010: begin
@@ -208,20 +208,20 @@ always_ff @(posedge clock or negedge resetn ) begin
 			end
 			4'b0110: begin
 				ALU_result <= ALU_in1 - ALU_in2;
-				if (ALU_result == 32'h0) zero_ctrl <= 1'b0;
+				if (ALU_result == 32'h0) zero_ctrl <= 1'b1;
 			end
 			4'b0001: begin
 				ALU_result <= ALU_in1 | ALU_in2;
-				if (ALU_result == 32'h0) zero_ctrl <= 1'b0;
+				if (ALU_result == 32'h0) zero_ctrl <= 1'b1;
 			end
 			4'b0000: begin
 				ALU_result <= ALU_in1 & ALU_in2;
-				if (ALU_result == 32'h0) zero_ctrl <= 1'b0;
+				if (ALU_result == 32'h0) zero_ctrl <= 1'b1;
 			end
 		endcase
 
 		data_address <= ALU_result;
-		if (Mem_Write) data_write <= reg_out2;
+		if (Mem_Write) data_write <= reg_read_data2;
 		// Memory read is handled by the data_mem module 
 
 		if (Reg_Write) begin
@@ -234,7 +234,7 @@ always_ff @(posedge clock or negedge resetn ) begin
 end
 
 	always_comb begin
-		sum_result = inst_address + immediate[31:0]; 
+		sum_result = inst_address + (immediate[31:0]<<1); 
 		next_PC = inst_address + 32'h4; 
 	end
 

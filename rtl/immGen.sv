@@ -32,7 +32,7 @@ module immGen (
             // SB-type: BEQ
             7'b1100011: begin
                 immediate = {{51{instruction[31]}}, instruction[31], instruction[7], 
-                             instruction[30:25], instruction[11:8], 1'b0};
+                        instruction[30:25], instruction[11:8], 1'b0};
             end
         
             

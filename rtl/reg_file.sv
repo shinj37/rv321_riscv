@@ -18,4 +18,7 @@ module reg_file (
 	output logic [31:0] read_data2 //register file read data 2
 );
 
+always_ff begin
+	
+
 endmodule
