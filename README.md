@@ -48,9 +48,6 @@ The processor follows the classic single-cycle RISC-V datapath design from Patte
 2. **Instruction Memory (inst_mem.sv)**: ✓ Stores program instructions
 3. **Register File (reg_file.sv)**: ✓ 32 general-purpose registers (x0-x31)
 4. **Data Memory (data_mem.sv)**: ✓ Load/store data memory
-
-#### To Be Implemented
-
 5. **Control Unit**: Generates control signals based on opcode
 6. **ALU (Arithmetic Logic Unit)**: Performs arithmetic and logical operations
 7. **Immediate Generator**: Extracts and sign-extends immediate values
