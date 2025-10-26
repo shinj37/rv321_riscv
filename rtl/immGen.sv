@@ -3,24 +3,27 @@
 `default_nettype none
 `endif
 
+`include "define_state.h"
 
 module immGen (
     input  logic [31:0] instruction,
     output logic [63:0] immediate
 );
 
-    logic [6:0] opcode;
-    assign opcode = instruction[6:0];
-    
+ logic [6:0] opcode;
+ assign opcode = instruction[6:0];
+ 
+ reg_control reg_state;
+ 
     always_comb begin
-        case (opcode)
+        case (reg_state)
             //R-type: ADD, SUB, OR, AND
-            7'b0110011: begin
+            R_type: begin
                 immediate = 64'h0;
             end
             
             // I-type: ADDI, SLTI, XORI, ORI, ANDI, SLLI, SRLI, SRAI, LB, LH, LW, LD, LBU, LHU, LWU, JALR
-            7'b0000011: begin
+            I_type: begin
                 immediate = {{52{instruction[31]}}, instruction[31:20]};
             end
             

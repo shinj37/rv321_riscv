@@ -4,7 +4,7 @@
 `endif
 
 
-`include "define_state.h";
+`include "define_state.h"
 
 module topmodule (
 	input logic clock,
@@ -22,7 +22,7 @@ logic [31:0] reg_write, reg_read_data1, reg_read_data2;
 logic [31:0] inst_address, inst_data;
 logic [6:0] opcode;
 logic [63:0] immediate;
-logic ALU_src, Branch, Mem_to_reg, ALU_op, Mem_write, Reg_write;
+logic ALU_src, Branch, Mem_to_reg, ALU_op, Mem_write;
 logic [31:0] sum_result;
 logic [3:0] operation;
 logic [3:0] functField;
@@ -43,12 +43,20 @@ immGen immediate_unit (
 	.immediate(immediate)
 );
 
+program_counter PC_unit (
+	.clock(clock),
+	.resetn(resetn),
+
+	.PC_in(PC_in),
+	.PC_out(PC_out)
+);
+
 data_mem datamemory_unit (
 	.resetn(resetn),
 	.clock(clock),
 	
 	.wr_en(Mem_write),
-	.read_en(Mem_read),
+	.read_en(read_en),
 	
 	.address(data_address),
 	.write_data(data_write),
@@ -59,7 +67,7 @@ inst_mem instruct_unit (
 	.resetn(resetn),
 	.clock(clock),
 	
-	.inst_address(inst_address),
+	.inst_address(PC_out),
 	.inst_data(inst_data)
 );
 
@@ -67,12 +75,10 @@ reg_file register_unit (
 	.resetn(resetn),
 	.clock(clock),
 	
-	.reg_wr_en(Reg_Write),
+	.reg_wr_en(reg_wr_en),
+	.opcode(opcode),
 	
-	.read_reg1(read_reg1),
-	.read_reg2(read_reg2),
-	.write_reg1(write_reg1),
-	.write_data(reg_write),
+	.instruction(inst_data),
 	
 	.read_data1(reg_read_data1),
 	.read_data2(reg_read_data2)
@@ -122,8 +128,8 @@ always_ff @(posedge clock or negedge resetn ) begin
 			R_format: begin
 				ALU_src <= 0;
 				Mem_to_reg <= 0;
-				Reg_write <= 1;
-				Mem_read <= 0;
+				reg_wr_en <= 1;
+				read_en <= 0;
 				Mem_write <= 0;
 				Branch <= 0;
 				ALU_op <= 2'b10;
@@ -132,8 +138,8 @@ always_ff @(posedge clock or negedge resetn ) begin
 			id: begin
 				ALU_src <= 1;
 				Mem_to_reg <= 1;
-				Reg_write <= 1;
-				Mem_read <= 1;
+				reg_wr_en <= 1;
+				read_en <= 1;
 				Mem_write <= 0;
 				Branch <= 0;
 				ALU_op <= 2'b00;
@@ -142,8 +148,8 @@ always_ff @(posedge clock or negedge resetn ) begin
 			sd: begin
 				ALU_src <= 1;
 				Mem_to_reg <= 1'bx;
-				Reg_write <= 1'b0;
-				Mem_read <= 1'b0;
+				reg_wr_en <= 1'b0;
+				read_en <= 1'b0;
 				Mem_write <= 1'b1;
 				Branch <= 0;
 				ALU_op <= 2'b00;
@@ -152,8 +158,8 @@ always_ff @(posedge clock or negedge resetn ) begin
 			beq: begin
 				ALU_src <= 0;
 				Mem_to_reg <= 1'bx;
-				Reg_write <= 1'b0;
-				Mem_read <= 1'b0;
+				reg_wr_en <= 1'b0;
+				read_en <= 1'b0;
 				Mem_write <= 1'b0;
 				Branch <= 1;
 				ALU_op <= 2'b01;
@@ -165,8 +171,8 @@ always_ff @(posedge clock or negedge resetn ) begin
 				Mem_to_reg <= 1'bx;
 				ALU_op <= 2'bxx;
 				Mem_write <= 1'bx;
-				Mem_read <= 1'bx;
-				Reg_write <= 1'bx;
+				read_en <= 1'bx;
+				reg_wr_en <= 1'bx;
 			end
 		endcase
 
@@ -221,21 +227,19 @@ always_ff @(posedge clock or negedge resetn ) begin
 		endcase
 
 		data_address <= ALU_result;
-		if (Mem_Write) data_write <= reg_read_data2;
+		data_write <= reg_read_data2;
 		// Memory read is handled by the data_mem module 
 
-		if (Reg_Write) begin
-			reg_write <= (Mem_to_reg) ? data_read : ALU_result;
-		end
+		reg_write <= (Mem_to_reg) ? data_read : ALU_result;
 		
-		inst_address <= (Branch && zero_ctrl) ? sum_result : next_PC; 
+		PC_in <= (Branch && zero_ctrl) ? sum_result : next_PC; 
 		
 	end
 end
 
 	always_comb begin
 		sum_result = inst_address + (immediate[31:0]<<1); 
-		next_PC = inst_address + 32'h4; 
+		next_PC = PC_out + 32'h4; 
 	end
 
 endmodule

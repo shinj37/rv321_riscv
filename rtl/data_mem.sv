@@ -13,10 +13,17 @@ module data_mem (
 	output logic [31:0] read_data
 );
 
+logic [31:0] mem [0:255]; 
 
+always_ff @(posedge clock or negedge resetn) begin
+	if (!resetn) begin
+		integer i;
+		for (i = 0; i < 256; i++) mem[i] <= 32'd0;
+	end else if (wr_en) begin
+		mem[address[9:2]] <= write_data;
+	end	
+end
 
-
-
-
+assign read_data = (read_en) ? mem[address[9:2]] : 32'd0;
 
 endmodule

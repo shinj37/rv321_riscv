@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RV321_RISC_V
-Fri Oct 24 22:26:33 2025
+Sat Oct 25 20:32:43 2025
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -10,7 +10,22 @@ Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |topmodule|instr_state
+  9. State Machine - |topmodule|operation
+ 10. State Machine - |topmodule|reg_file:register_unit|reg_state
+ 11. Registers Removed During Synthesis
+ 12. Removed Registers Triggering Further Register Optimizations
+ 13. General Register Statistics
+ 14. Port Connectivity Checks: "reg_file:register_unit"
+ 15. Port Connectivity Checks: "data_mem:datamemory_unit"
+ 16. Port Connectivity Checks: "immGen:immediate_unit"
+ 17. Post-Synthesis Netlist Statistics for Top Partition
+ 18. Elapsed Time Per Partition
+ 19. Analysis & Synthesis Messages
+ 20. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -34,22 +49,27 @@ https://fpgasoftware.intel.com/eula.
 
 
 
-+---------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                              ;
-+-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Failed - Fri Oct 24 22:26:33 2025           ;
-; Quartus Prime Version       ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
-; Revision Name               ; RV321_RISC_V                                ;
-; Top-level Entity Name       ; topmodule                                   ;
-; Family                      ; Cyclone V                                   ;
-; Logic utilization (in ALMs) ; N/A until Partition Merge                   ;
-; Total registers             ; N/A until Partition Merge                   ;
-; Total pins                  ; N/A until Partition Merge                   ;
-; Total virtual pins          ; N/A until Partition Merge                   ;
-; Total block memory bits     ; N/A until Partition Merge                   ;
-; Total PLLs                  ; N/A until Partition Merge                   ;
-; Total DLLs                  ; N/A until Partition Merge                   ;
-+-----------------------------+---------------------------------------------+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Sat Oct 25 20:32:43 2025       ;
+; Quartus Prime Version           ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
+; Revision Name                   ; RV321_RISC_V                                ;
+; Top-level Entity Name           ; topmodule                                   ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 0                                           ;
+; Total pins                      ; 2                                           ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
@@ -155,28 +175,328 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                   ;
++----------------------------------+-----------------+------------------------------------+------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                         ; Library ;
++----------------------------------+-----------------+------------------------------------+------------------------------------------------------+---------+
+; topmodule.sv                     ; yes             ; User SystemVerilog HDL File        ; /home/justinshin/RV321_RISC_V/rtl/topmodule.sv       ;         ;
+; ../rtl/data_mem.sv               ; yes             ; User SystemVerilog HDL File        ; /home/justinshin/RV321_RISC_V/rtl/data_mem.sv        ;         ;
+; ../rtl/reg_file.sv               ; yes             ; User SystemVerilog HDL File        ; /home/justinshin/RV321_RISC_V/rtl/reg_file.sv        ;         ;
+; ../rtl/inst_mem.sv               ; yes             ; User SystemVerilog HDL File        ; /home/justinshin/RV321_RISC_V/rtl/inst_mem.sv        ;         ;
+; define_state.h                   ; yes             ; Auto-Found File                    ; /home/justinshin/RV321_RISC_V/rtl/define_state.h     ;         ;
+; immGen.sv                        ; yes             ; Auto-Found SystemVerilog HDL File  ; /home/justinshin/RV321_RISC_V/rtl/immGen.sv          ;         ;
+; program_counter.sv               ; yes             ; Auto-Found SystemVerilog HDL File  ; /home/justinshin/RV321_RISC_V/rtl/program_counter.sv ;         ;
++----------------------------------+-----------------+------------------------------------+------------------------------------------------------+---------+
+
+
++------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary          ;
++---------------------------------------------+--------+
+; Resource                                    ; Usage  ;
++---------------------------------------------+--------+
+; Estimate of Logic utilization (ALMs needed) ; 0      ;
+;                                             ;        ;
+; Combinational ALUT usage for logic          ; 0      ;
+;     -- 7 input functions                    ; 0      ;
+;     -- 6 input functions                    ; 0      ;
+;     -- 5 input functions                    ; 0      ;
+;     -- 4 input functions                    ; 0      ;
+;     -- <=3 input functions                  ; 0      ;
+;                                             ;        ;
+; Dedicated logic registers                   ; 0      ;
+;                                             ;        ;
+; I/O pins                                    ; 2      ;
+;                                             ;        ;
+; Total DSP Blocks                            ; 0      ;
+;                                             ;        ;
+; Maximum fan-out node                        ; resetn ;
+; Maximum fan-out                             ; 1      ;
+; Total fan-out                               ; 2      ;
+; Average fan-out                             ; 0.50   ;
++---------------------------------------------+--------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                    ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; |topmodule                 ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 2    ; 0            ; |topmodule          ; topmodule   ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------+
+; State Machine - |topmodule|instr_state                                                          ;
++----------------------+-----------------+----------------+----------------+----------------------+
+; Name                 ; instr_state.beq ; instr_state.sd ; instr_state.id ; instr_state.R_format ;
++----------------------+-----------------+----------------+----------------+----------------------+
+; instr_state.R_format ; 0               ; 0              ; 0              ; 0                    ;
+; instr_state.id       ; 0               ; 0              ; 1              ; 1                    ;
+; instr_state.sd       ; 0               ; 1              ; 0              ; 1                    ;
+; instr_state.beq      ; 1               ; 0              ; 0              ; 1                    ;
++----------------------+-----------------+----------------+----------------+----------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------+
+; State Machine - |topmodule|operation                                               ;
++----------------+----------------+----------------+----------------+----------------+
+; Name           ; operation.0010 ; operation.0000 ; operation.0110 ; operation.0001 ;
++----------------+----------------+----------------+----------------+----------------+
+; operation.0000 ; 0              ; 0              ; 0              ; 0              ;
+; operation.0001 ; 0              ; 1              ; 0              ; 1              ;
+; operation.0010 ; 1              ; 1              ; 0              ; 0              ;
+; operation.0110 ; 0              ; 1              ; 1              ; 0              ;
++----------------+----------------+----------------+----------------+----------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------+
+; State Machine - |topmodule|reg_file:register_unit|reg_state                                    ;
++-------------------+-------------------+------------------+------------------+------------------+
+; Name              ; reg_state.SB_type ; reg_state.S_type ; reg_state.I_type ; reg_state.R_type ;
++-------------------+-------------------+------------------+------------------+------------------+
+; reg_state.R_type  ; 0                 ; 0                ; 0                ; 0                ;
+; reg_state.I_type  ; 0                 ; 0                ; 1                ; 1                ;
+; reg_state.S_type  ; 0                 ; 1                ; 0                ; 1                ;
+; reg_state.SB_type ; 1                 ; 0                ; 0                ; 1                ;
++-------------------+-------------------+------------------+------------------+------------------+
+
+
++-----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                ;
++------------------------------------------+----------------------------------------+
+; Register name                            ; Reason for Removal                     ;
++------------------------------------------+----------------------------------------+
+; opcode[0..6]                             ; Stuck at GND due to stuck port data_in ;
+; instr_state~2                            ; Lost fanout                            ;
+; instr_state~3                            ; Lost fanout                            ;
+; operation~9                              ; Lost fanout                            ;
+; operation~11                             ; Lost fanout                            ;
+; reg_file:register_unit|reg_state~2       ; Lost fanout                            ;
+; reg_file:register_unit|reg_state~3       ; Lost fanout                            ;
+; ALU_op                                   ; Lost fanout                            ;
+; instr_state.R_format                     ; Lost fanout                            ;
+; instr_state.id                           ; Lost fanout                            ;
+; instr_state.sd                           ; Lost fanout                            ;
+; instr_state.beq                          ; Lost fanout                            ;
+; operation.0001                           ; Lost fanout                            ;
+; operation.0110                           ; Lost fanout                            ;
+; operation.0000                           ; Lost fanout                            ;
+; operation.0010                           ; Lost fanout                            ;
+; reg_file:register_unit|reg_state.R_type  ; Lost fanout                            ;
+; reg_file:register_unit|reg_state.I_type  ; Lost fanout                            ;
+; reg_file:register_unit|reg_state.S_type  ; Lost fanout                            ;
+; reg_file:register_unit|reg_state.SB_type ; Lost fanout                            ;
+; Total Number of Removed Registers = 26   ;                                        ;
++------------------------------------------+----------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                 ;
++------------------------------------+--------------------+-----------------------------------------------------------------------------------+
+; Register name                      ; Reason for Removal ; Registers Removed due to This Register                                            ;
++------------------------------------+--------------------+-----------------------------------------------------------------------------------+
+; operation~9                        ; Lost Fanouts       ; ALU_op, operation.0110, operation.0010                                            ;
+; instr_state~2                      ; Lost Fanouts       ; instr_state.id, instr_state.beq                                                   ;
+; reg_file:register_unit|reg_state~2 ; Lost Fanouts       ; reg_file:register_unit|reg_state.I_type, reg_file:register_unit|reg_state.SB_type ;
+; instr_state~3                      ; Lost Fanouts       ; instr_state.sd                                                                    ;
+; reg_file:register_unit|reg_state~3 ; Lost Fanouts       ; reg_file:register_unit|reg_state.S_type                                           ;
++------------------------------------+--------------------+-----------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "reg_file:register_unit"                                                                                                                           ;
++------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type  ; Severity ; Details                                                                                                                                      ;
++------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; write_data ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "data_mem:datamemory_unit"                                                                ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; read_data ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "immGen:immediate_unit"                                                                           ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port              ; Type   ; Severity ; Details                                                                             ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; immediate[63..32] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-------------------+---------------------------------+
+; Type              ; Count                           ;
++-------------------+---------------------------------+
+; boundary_port     ; 2                               ;
+;                   ;                                 ;
+; Max LUT depth     ; 0.00                            ;
+; Average LUT depth ; 0.00                            ;
++-------------------+---------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Fri Oct 24 22:26:28 2025
+    Info: Processing started: Sat Oct 25 20:32:38 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RV321_RISC_V -c RV321_RISC_V
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
-Error (10187): Verilog HDL syntax error at topmodule.sv(240): unexpected end of file in If Statement File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 240
-Info (12021): Found 0 design units, including 0 entities, in source file /home/justinshin/RV321_RISC_V/rtl/topmodule.sv
+Info (12021): Found 1 design units, including 1 entities, in source file /home/justinshin/RV321_RISC_V/rtl/topmodule.sv
+    Info (12023): Found entity 1: topmodule File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 9
 Info (12021): Found 1 design units, including 1 entities, in source file /home/justinshin/RV321_RISC_V/rtl/data_mem.sv
     Info (12023): Found entity 1: data_mem File: /home/justinshin/RV321_RISC_V/rtl/data_mem.sv Line: 6
 Info (12021): Found 1 design units, including 1 entities, in source file /home/justinshin/RV321_RISC_V/rtl/reg_file.sv
-    Info (12023): Found entity 1: reg_file File: /home/justinshin/RV321_RISC_V/rtl/reg_file.sv Line: 7
+    Info (12023): Found entity 1: reg_file File: /home/justinshin/RV321_RISC_V/rtl/reg_file.sv Line: 10
 Info (12021): Found 1 design units, including 1 entities, in source file /home/justinshin/RV321_RISC_V/rtl/inst_mem.sv
     Info (12023): Found entity 1: inst_mem File: /home/justinshin/RV321_RISC_V/rtl/inst_mem.sv Line: 6
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 1 error, 1 warning
-    Error: Peak virtual memory: 901 megabytes
-    Error: Processing ended: Fri Oct 24 22:26:33 2025
-    Error: Elapsed time: 00:00:05
-    Error: Total CPU time (on all processors): 00:00:16
+Info (12127): Elaborating entity "topmodule" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at topmodule.sv(20): object "read_reg1" assigned a value but never read File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 20
+Warning (10036): Verilog HDL or VHDL warning at topmodule.sv(20): object "read_reg2" assigned a value but never read File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 20
+Warning (10036): Verilog HDL or VHDL warning at topmodule.sv(20): object "write_reg1" assigned a value but never read File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 20
+Warning (10036): Verilog HDL or VHDL warning at topmodule.sv(21): object "reg_write" assigned a value but never read File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 21
+Warning (10272): Verilog HDL Case Statement warning at topmodule.sv(118): case item expression covers a value already covered by a previous case item File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 118
+Warning (10230): Verilog HDL assignment warning at topmodule.sv(135): truncated value with size 2 to match size of target (1) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 135
+Warning (10230): Verilog HDL assignment warning at topmodule.sv(145): truncated value with size 2 to match size of target (1) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 145
+Warning (10230): Verilog HDL assignment warning at topmodule.sv(155): truncated value with size 2 to match size of target (1) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 155
+Warning (10230): Verilog HDL assignment warning at topmodule.sv(165): truncated value with size 2 to match size of target (1) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 165
+Warning (10230): Verilog HDL assignment warning at topmodule.sv(172): truncated value with size 2 to match size of target (1) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 172
+Warning (10059): Verilog HDL Case Statement warning at topmodule.sv(183): case item expression never matches the case expression because it contains an 'x' or 'z' value File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 183
+Warning (10199): Verilog HDL Case Statement warning at topmodule.sv(186): case item expression never matches the case expression File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 186
+Warning (10230): Verilog HDL assignment warning at topmodule.sv(205): truncated value with size 64 to match size of target (32) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 205
+Warning (10240): Verilog HDL Always Construct warning at topmodule.sv(88): inferring latch(es) for variable "inst_address", which holds its previous value in one or more paths through the always construct File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[0]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[1]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[2]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[3]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[4]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[5]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[6]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[7]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[8]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[9]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[10]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[11]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[12]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[13]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[14]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[15]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[16]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[17]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[18]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[19]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[20]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[21]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[22]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[23]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[24]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[25]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[26]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[27]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[28]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[29]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[30]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Info (10041): Inferred latch for "inst_address[31]" at topmodule.sv(88) File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 88
+Warning (12125): Using design file /home/justinshin/RV321_RISC_V/rtl/immGen.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: immGen File: /home/justinshin/RV321_RISC_V/rtl/immGen.sv Line: 8
+Info (12128): Elaborating entity "immGen" for hierarchy "immGen:immediate_unit" File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 44
+Warning (10036): Verilog HDL or VHDL warning at immGen.sv(13): object "opcode" assigned a value but never read File: /home/justinshin/RV321_RISC_V/rtl/immGen.sv Line: 13
+Warning (10858): Verilog HDL warning at immGen.sv(16): object reg_state used but never assigned File: /home/justinshin/RV321_RISC_V/rtl/immGen.sv Line: 16
+Warning (10199): Verilog HDL Case Statement warning at immGen.sv(31): case item expression never matches the case expression File: /home/justinshin/RV321_RISC_V/rtl/immGen.sv Line: 31
+Warning (10199): Verilog HDL Case Statement warning at immGen.sv(36): case item expression never matches the case expression File: /home/justinshin/RV321_RISC_V/rtl/immGen.sv Line: 36
+Warning (10030): Net "reg_state" at immGen.sv(16) has no driver or initial value, using a default initial value '0' File: /home/justinshin/RV321_RISC_V/rtl/immGen.sv Line: 16
+Warning (12125): Using design file /home/justinshin/RV321_RISC_V/rtl/program_counter.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: program_counter File: /home/justinshin/RV321_RISC_V/rtl/program_counter.sv Line: 6
+Info (12128): Elaborating entity "program_counter" for hierarchy "program_counter:PC_unit" File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 52
+Info (12128): Elaborating entity "data_mem" for hierarchy "data_mem:datamemory_unit" File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 64
+Info (12128): Elaborating entity "inst_mem" for hierarchy "inst_mem:instruct_unit" File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 72
+Warning (10858): Verilog HDL warning at inst_mem.sv(14): object mem used but never assigned File: /home/justinshin/RV321_RISC_V/rtl/inst_mem.sv Line: 14
+Info (12128): Elaborating entity "reg_file" for hierarchy "reg_file:register_unit" File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 85
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (17049): 19 registers lost all their fanouts during netlist optimizations.
+Warning (20013): Ignored 24 assignments for entity "RV321_RISC_V" -- entity does not exist in design
+    Warning (20014): Assignment for entity set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_PRESERVE_HIGH_SPEED_TILES ON -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IGNORE_SOURCE_FILE_CHANGES OFF -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ALWAYS_USE_QXP_NETLIST OFF -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_COLOR 16764057 -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_ASSIGNMENTS ON -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_ASSIGNMENTS REPLACE_CONFLICTING -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_LOGICLOCK_REGIONS UPDATE_CONFLICTING -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PIN_ASSIGNMENTS ON -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PROMOTE_ASSIGNMENTS ON -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_TYPE STANDARD_PARTITION -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name ALLOW_MULTIPLE_PERSONAS OFF -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ASD_REGION_ID 1 -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name CROSS_BOUNDARY_OPTIMIZATIONS OFF -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PROPAGATE_CONSTANTS_ON_INPUTS ON -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PROPAGATE_INVERSIONS_ON_INPUTS ON -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name REMOVE_LOGIC_ON_UNCONNECTED_OUTPUTS ON -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name MERGE_EQUIVALENT_INPUTS ON -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name MERGE_EQUIVALENT_BIDIRS ON -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name ABSORB_PATHS_FROM_OUTPUTS_TO_INPUTS ON -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_EXTRACT_HARD_BLOCK_NODES ON -entity RV321_RISC_V -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ENABLE_STRICT_PRESERVATION OFF -entity RV321_RISC_V -section_id Top was ignored
+Info (144001): Generated suppressed messages file /home/justinshin/RV321_RISC_V/syn/output_files/RV321_RISC_V.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "resetn" File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 12
+    Warning (15610): No output dependent on input pin "clock" File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 10
+Info (21057): Implemented 2 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 0 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 52 warnings
+    Info: Peak virtual memory: 966 megabytes
+    Info: Processing ended: Sat Oct 25 20:32:43 2025
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:14
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in /home/justinshin/RV321_RISC_V/syn/output_files/RV321_RISC_V.map.smsg.
 
 

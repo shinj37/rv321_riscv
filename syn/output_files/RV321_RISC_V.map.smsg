@@ -1,1 +1,6 @@
-Info (10281): Verilog HDL Declaration information at topmodule.sv(21): object "reg_write" differs only in case from object "Reg_write" in the same scope File: /home/justinshin/RV321_RISC_V/rtl/topmodule.sv Line: 21
+Warning (10273): Verilog HDL warning at reg_file.sv(55): extended using "x" or "z" File: /home/justinshin/RV321_RISC_V/rtl/reg_file.sv Line: 55
+Warning (10273): Verilog HDL warning at reg_file.sv(63): extended using "x" or "z" File: /home/justinshin/RV321_RISC_V/rtl/reg_file.sv Line: 63
+Warning (10273): Verilog HDL warning at reg_file.sv(69): extended using "x" or "z" File: /home/justinshin/RV321_RISC_V/rtl/reg_file.sv Line: 69
+Warning (10273): Verilog HDL warning at reg_file.sv(73): extended using "x" or "z" File: /home/justinshin/RV321_RISC_V/rtl/reg_file.sv Line: 73
+Warning (10273): Verilog HDL warning at reg_file.sv(74): extended using "x" or "z" File: /home/justinshin/RV321_RISC_V/rtl/reg_file.sv Line: 74
+Warning (10273): Verilog HDL warning at reg_file.sv(75): extended using "x" or "z" File: /home/justinshin/RV321_RISC_V/rtl/reg_file.sv Line: 75

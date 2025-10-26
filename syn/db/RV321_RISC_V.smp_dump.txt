@@ -1,0 +1,21 @@
+
+State Machine - |topmodule|instr_state
+Name instr_state.beq instr_state.sd instr_state.id instr_state.R_format 
+instr_state.R_format 0 0 0 0 
+instr_state.id 0 0 1 1 
+instr_state.sd 0 1 0 1 
+instr_state.beq 1 0 0 1 
+
+State Machine - |topmodule|operation
+Name operation.0010 operation.0000 operation.0110 operation.0001 
+operation.0000 0 0 0 0 
+operation.0001 0 1 0 1 
+operation.0010 1 1 0 0 
+operation.0110 0 1 1 0 
+
+State Machine - |topmodule|reg_file:register_unit|reg_state
+Name reg_state.SB_type reg_state.S_type reg_state.I_type reg_state.R_type 
+reg_state.R_type 0 0 0 0 
+reg_state.I_type 0 0 1 1 
+reg_state.S_type 0 1 0 1 
+reg_state.SB_type 1 0 0 1 
