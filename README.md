@@ -4,7 +4,7 @@ A hardware implementation of the RISC-V RV32I instruction set with planned SIMD 
 
 ## Overview
 
-This project implements a 32-bit RISC-V processor core conforming to the RV32I base integer instruction set. The design is written in SystemVerilog and is optimized for the Gowin GW2AR-18 FPGA found on the Tang Nano 20K board. SIMD extensions for parallel data processing will be added to enhance multimedia and DSP capabilities.
+This project is still in development, with the end goal of implementing the RISC-V RV32I instruction set on the Tang Nano 20k FPGA development board. Current features include the RV32I base ISA written in System Verilog. I am currently working on implementing performance optimization using Pipelining and hazard handling. 
 
 ### Current Features
 
