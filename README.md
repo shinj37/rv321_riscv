@@ -48,11 +48,11 @@ The processor follows the classic single-cycle RISC-V datapath design from Patte
 2. **Instruction Memory (inst_mem.sv)**: ✓ Stores program instructions
 3. **Register File (reg_file.sv)**: ✓ 32 general-purpose registers (x0-x31)
 4. **Data Memory (data_mem.sv)**: ✓ Load/store data memory
-5. **Control Unit**: Generates control signals based on opcode
-6. **ALU (Arithmetic Logic Unit)**: Performs arithmetic and logical operations
-7. **Immediate Generator**: Extracts and sign-extends immediate values
-8. **Branch Comparator**: Evaluates branch conditions
-9. **Multiplexers**: Select between PC+4, branch target, ALU result, memory data
+5. **Control Unit**: ✓ Generates control signals based on opcode
+6. **ALU (Arithmetic Logic Unit)**: ✓ Performs arithmetic and logical operations
+7. **Immediate Generator**: ✓ Extracts and sign-extends immediate values
+8. **Branch Comparator**: ✓ Evaluates branch conditions
+9. **Multiplexers**: ✓ Select between PC+4, branch target, ALU result, memory data
 
 ### Control Signals
 
@@ -67,54 +67,14 @@ The control unit will generate the following signals based on instruction opcode
 | `MemWrite` | Enable data memory write |
 | `Branch` | Instruction is a branch |
 | `ALUOp` | ALU operation type |
-| `Jump` | Unconditional jump |
 
 ### Instruction Flow
 
-1. **Fetch**: PC addresses instruction memory, instruction is read
-2. **Decode**: Instruction fields extracted, registers read, immediate generated
-3. **Execute**: ALU performs operation (arithmetic, logic, address calculation)
-4. **Memory**: Data memory accessed for load/store instructions
-5. **Write-back**: Result written to register file
-6. **PC Update**: PC incremented or updated with branch/jump target
-
-### Current Modules
-
-1. **topmodule.sv**: Top-level integration (control logic and datapath to be completed)
-2. **inst_mem.sv**: Instruction memory module ✓
-3. **data_mem.sv**: Data memory for load/store operations ✓
-4. **reg_file.sv**: 32-register register file (x0-x31) ✓
-
-## Directory Structure
-
-```
-.
-├── db/                          # Database files (Quartus)
-│   ├── RV321_RISC_V.db_info
-│   └── RV321_RISC_V.quiproj.12880.rdr.flock
-├── doc/                         # Documentation
-│   └── README.md
-├── rtl/                         # RTL source files
-│   ├── data_mem.sv             # Data memory module
-│   ├── data_mem.sv.bak         # Backup
-│   ├── inst_mem.sv             # Instruction memory module
-│   ├── inst_mem.sv.bak         # Backup
-│   ├── reg_file.sv             # Register file module
-│   ├── reg_file.sv.bak         # Backup
-│   ├── topmodule.sv            # Top-level integration
-│   └── topmodule.sv.bak        # Backup
-├── sim/                         # Simulation scripts
-│   ├── compile.do              # ModelSim compile script
-│   ├── run.do                  # ModelSim run script
-│   ├── save.do                 # Save simulation state
-│   ├── setenv.do               # Environment setup
-│   └── waves.do                # Waveform configuration
-├── syn/                         # Synthesis files
-│   ├── RV321_RISC_V.qpf        # Quartus project file
-│   └── RV321_RISC_V.qsf        # Quartus settings file
-└── tb/                          # Testbenches
-    └── testbench.sv            # Main testbench
-```
+1. **Instruction Fetch (IF)**: PC addresses instruction memory, instruction is read
+2. **Instruction Decode (ID)**: Instruction fields extracted, registers read, immediate generated
+3. **Execute (EX)**: ALU performs operation (arithmetic, logic, address calculation)
+4. **Memory (MEM)**: Data memory accessed for load/store instructions
+5. **Write-back (WB)**: Result written to register file
 
 ## RV32I Instruction Set
 
@@ -128,15 +88,12 @@ The control unit will generate the following signals based on instruction opcode
 - **Upper Immediate**: `LUI`, `AUIPC`
 
 #### Control Transfer Instructions
-- **Unconditional Jumps**: `JAL`, `JALR`
 - **Conditional Branches**: `BEQ`, `BNE`, `BLT`, `BGE`, `BLTU`, `BGEU`
 
 #### Load and Store Instructions
 - **Loads**: `LB`, `LH`, `LW`, `LBU`, `LHU`
 - **Stores**: `SB`, `SH`, `SW`
 
-#### System Instructions
-- `FENCE`, `ECALL`, `EBREAK`
 
 ## SIMD Extensions (Planned)
 
@@ -308,7 +265,6 @@ Constraint file will map signals to Tang Nano 20K pins:
 - [x] Complete instruction decoder
 - [x] ALU implementation
 - [x] Control unit
-- [x] Branch/Jump logic
 
 ### Phase 2: Verification & Testing
 - [ ] Comprehensive testbenches
