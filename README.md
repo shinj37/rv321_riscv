@@ -40,6 +40,12 @@ The processor follows the classic single-cycle RISC-V datapath design from Patte
 
 ![Datapath Diagram](https://github.com/user-attachments/assets/68eecff0-229b-4c35-ad2a-fa75159a6ddc)
 
+### Pipelined Datapath
+
+The pipelined datapath will improve the performance of the processors by increasing throughput. Handling for Control, Instruction, and Data Hazards will be implemented. 
+The design follows the RISC-V pipeline datapath from Patterson & Hennessy's "Computer Organization and Design" (Figure 4.49).
+<img width="1141" height="673" alt="image" src="https://github.com/user-attachments/assets/4e10ddbe-b36d-4a7e-93b5-d2b55456003e" />
+
 ### Datapath Components
 
 #### Implemented Modules
